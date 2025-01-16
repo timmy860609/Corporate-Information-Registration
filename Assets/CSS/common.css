@@ -1,0 +1,243 @@
+
+body{
+	font-family: "Noto Sans TC", sans-serif;
+	background-color: #072C87;
+	line-height: 1.7;
+    overflow-x: hidden;
+    margin: 0 auto;
+}
+button{
+    border: none;
+    cursor: pointer
+}
+/* Color */
+
+.black{
+    color: black;
+}
+.white{
+    color: white;
+}
+.orange{
+    color: #EB6100;
+}
+.blue{
+    color: #0053AC;
+}
+.Bright{
+    color: #FF5342;   
+}
+
+
+/* Spacing */
+
+
+.container{
+	display: flex;
+	height: 80px;
+	justify-content: space-between;
+	align-items: center;
+    padding: 0 32px
+}
+
+.wrapper{
+	max-width: 1440px;
+    padding: 120px 120px 0px 120px;
+	margin: 0 auto;
+}
+
+.submit{
+	width: 100%;
+	position: relative;
+}
+
+.top-bg{
+	position: absolute;
+	right: 0;
+	top: 0;
+	width: 20vw;
+}
+
+.bottom-bg{
+	position: absolute;
+	left: 50%;
+	bottom: -120px;
+	transform: translateX(-50%);
+	width: 100%;
+	height: 45vw;
+}
+
+@media (max-width: 1439px) {
+	.wrapper {
+		width: 100%;
+		padding: 96px 32px 0px 32px;
+	}
+}
+
+@media (max-width: 1023px) {
+    .container {
+        width: 100%;
+      }
+  }
+
+@media (max-width: 767px) {
+	.wrapper {
+		width: 100%;
+		padding: 32px 24px 0  24px;
+	}
+    .container {
+		width: 100%;
+		padding: 0 24px;
+		height: 56px;
+	}
+
+	.bottom-bg{
+		bottom: -64px;
+	}
+}
+
+
+
+/* header */
+.navbar{
+	width: 100%;
+	position: fixed;
+	top: 0;
+	align-items: center;
+	background:white ;
+	z-index: 10000;
+}
+
+
+.logo a {
+	color: #fff;
+	font-size: 20px;
+	font-weight: bolder;
+	text-indent: 101%;
+    white-space: nowrap;
+    overflow: hidden;
+    display: block;
+    background-image: url(../IMG/YuantaLogo.svg);
+    width: 165px;
+	background-repeat: no-repeat;
+}
+
+
+/* ContainerBlock */
+
+
+.Title,.Title-White{
+    display: inline-block;
+    color: #042190;
+    border-bottom: 3px solid #042190;
+    width: fit-content;
+    margin-bottom: 24px;
+}
+
+.Title-White{
+    color: white;
+    border-bottom: 1px solid white;
+}
+
+.TitleContent{
+    font-size: 18px;
+    text-align: center;
+}
+
+
+
+
+
+/* ContactUS */
+.contactus{
+	background-color: #153EA7;
+	padding: 64px 24px;
+    margin-top: 120px;
+}
+.section{
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+	justify-content: center;
+}
+.section p{
+	font-size: 36px;
+	font-weight: 900;
+}
+
+
+
+
+.block{
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+    align-items: center;
+}
+.block p{
+	font-size: 36px;
+	font-weight: 900;
+}
+
+.ig{
+	background-image: url(../IMG/BG_Element/IG_btn.png);
+	width: 281px;
+	height: 60px;
+	background-repeat: no-repeat;
+	background-size: cover;
+	margin:  0 auto;
+    margin-top: 40px;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.ig:hover {
+    transform: scale(1.1);
+    filter: drop-shadow(0 8px 12px rgba(0, 0, 0, 0.3)); 
+}
+/* Footer */
+
+.footer{
+	background-color: black;
+}
+.about{
+	max-width: 1200px;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	margin: 0 auto;
+	padding: 60px 40px 40px 40px;
+}
+.web{
+	text-align: center;
+	padding: 32px;
+	border-top: 1px solid white;
+}
+
+.ig_footer{
+    width: 51px;
+    height: 51px;
+}
+
+
+.community{
+    display: flex;
+    gap: 16px;
+
+}
+
+
+@media (max-width: 767px) {
+
+	.contactus{
+		margin-top: 64px;
+	}
+    .about{
+        flex-direction: column;
+        gap: 16px;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        gap: 24px;
+    }
+}
