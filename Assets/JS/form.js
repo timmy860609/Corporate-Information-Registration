@@ -1,4 +1,4 @@
-// 获取 URL 参数
+
 function getQueryParams() {
     const urlParams = new URLSearchParams(window.location.search);
     return {
@@ -11,7 +11,7 @@ function getQueryParams() {
     };
 }
 
-// 显示用户数据
+
 function displayData() {
     const params = getQueryParams();
     if (document.getElementById("confirm-name")) {
@@ -32,7 +32,6 @@ function displayData() {
     }
 }
 
-// 用于表单验证的函数
 function validateForm() {
     const fields = [
         { id: 'name', message: '請填寫姓名', validate: (value) => value.trim() !== '' },
@@ -45,12 +44,11 @@ function validateForm() {
     let isValid = true;
     let firstInvalidField = null;
 
-    // 檢查所有欄位
+  
     fields.forEach((field) => {
         const input = document.getElementById(field.id);
         const parent = input.parentNode;
 
-        // 確保有錯誤訊息容器
         let errorContainer = parent.querySelector('.error-message');
         if (!errorContainer) {
             errorContainer = document.createElement('p');
@@ -59,18 +57,18 @@ function validateForm() {
             parent.appendChild(errorContainer);
         }
 
-        // 檢核邏輯
+   
         if (!field.validate(input.value)) {
-            parent.classList.add('invalid'); // 加入錯誤樣式
+            parent.classList.add('invalid'); 
             if (!firstInvalidField) {
-                firstInvalidField = input; // 紀錄第一個錯誤欄位
+                firstInvalidField = input; 
             }
             isValid = false;
         } else {
-            parent.classList.remove('invalid'); // 移除錯誤樣式
+            parent.classList.remove('invalid');
         }
 
-        // 實時檢核：監聽輸入事件，移除錯誤訊息
+       
         input.addEventListener('input', () => {
             if (field.validate(input.value)) {
                 parent.classList.remove('invalid');
@@ -78,12 +76,12 @@ function validateForm() {
         });
     });
 
-    // 如果有檢核錯誤，自動滾動到第一個錯誤欄位
+  
     if (!isValid && firstInvalidField) {
         firstInvalidField.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
 
-    // 如果通過檢核，跳轉到下一頁
+   
     if (isValid) {
         const name = encodeURIComponent(document.getElementById("name").value);
         const phone = encodeURIComponent(document.getElementById("phone").value);
@@ -92,20 +90,20 @@ function validateForm() {
         const department = encodeURIComponent(document.getElementById("deparment").value);
         const style = encodeURIComponent(document.querySelector('input[name="styleToggle"]:checked').nextElementSibling.innerText);
 
-        // 构建包含表单数据的 URL 参数
+      
         const url = `agreement.html?name=${name}&phone=${phone}&email=${email}&school=${school}&department=${department}&style=${style}`;
 
-        // 跳转到 agreement.html 页面并将数据作为 URL 参数传递
+        
         window.location.href = url;
     }
 }
 
-// 确认并继续到 result.html
+
 function goToResult() {
     const params = getQueryParams();
     const resultUrl = `result.html?name=${params.name}&phone=${params.phone}&email=${params.email}&school=${params.school}&department=${params.department}&style=${params.style}`;
     window.location.href = resultUrl;
 }
 
-// 页面加载时显示数据
+
 window.onload = displayData;

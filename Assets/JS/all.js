@@ -8,6 +8,3 @@ radios.forEach(radio => {
         alert(`選擇了 ${radio.nextElementSibling.innerText}`);
     });
 });
-
-
-
