@@ -1,37 +1,3 @@
-
-function getQueryParams() {
-    const urlParams = new URLSearchParams(window.location.search);
-    return {
-        name: urlParams.get('name'),
-        phone: urlParams.get('phone'),
-        email: urlParams.get('email'),
-        school: urlParams.get('school'),
-        department: urlParams.get('department'),
-        style: urlParams.get('style'),
-    };
-}
-
-
-function displayData() {
-    const params = getQueryParams();
-    if (document.getElementById("confirm-name")) {
-        document.getElementById("confirm-name").textContent = params.name;
-        document.getElementById("confirm-phone").textContent = params.phone;
-        document.getElementById("confirm-email").textContent = params.email;
-        document.getElementById("confirm-school").textContent = params.school;
-        document.getElementById("confirm-department").textContent = params.department;
-        document.getElementById("confirm-style").textContent = params.style;
-    }
-    if (document.getElementById("result-name")) {
-        document.getElementById("result-name").textContent = params.name;
-        document.getElementById("result-phone").textContent = params.phone;
-        document.getElementById("result-email").textContent = params.email;
-        document.getElementById("result-school").textContent = params.school;
-        document.getElementById("result-department").textContent = params.department;
-        document.getElementById("result-style").textContent = params.style;
-    }
-}
-
 function validateForm() {
     const fields = [
         { id: 'name', message: '請填寫姓名', validate: (value) => value.trim() !== '' },
@@ -42,14 +8,12 @@ function validateForm() {
     ];
 
     let isValid = true;
-    let firstInvalidField = null;
 
-  
     fields.forEach((field) => {
         const input = document.getElementById(field.id);
         const parent = input.parentNode;
-
         let errorContainer = parent.querySelector('.error-message');
+        
         if (!errorContainer) {
             errorContainer = document.createElement('p');
             errorContainer.className = 'error-message';
@@ -57,18 +21,13 @@ function validateForm() {
             parent.appendChild(errorContainer);
         }
 
-   
         if (!field.validate(input.value)) {
-            parent.classList.add('invalid'); 
-            if (!firstInvalidField) {
-                firstInvalidField = input; 
-            }
+            parent.classList.add('invalid');
             isValid = false;
         } else {
             parent.classList.remove('invalid');
         }
 
-       
         input.addEventListener('input', () => {
             if (field.validate(input.value)) {
                 parent.classList.remove('invalid');
@@ -76,34 +35,40 @@ function validateForm() {
         });
     });
 
-  
-    if (!isValid && firstInvalidField) {
-        firstInvalidField.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    }
-
-   
     if (isValid) {
-        const name = encodeURIComponent(document.getElementById("name").value);
-        const phone = encodeURIComponent(document.getElementById("phone").value);
-        const email = encodeURIComponent(document.getElementById("email").value);
-        const school = encodeURIComponent(document.getElementById("school").value);
-        const department = encodeURIComponent(document.getElementById("deparment").value);
-        const style = encodeURIComponent(document.querySelector('input[name="styleToggle"]:checked').nextElementSibling.innerText);
+        const formData = {
+            name: document.getElementById("name").value,
+            phone: document.getElementById("phone").value,
+            email: document.getElementById("email").value,
+            school: document.getElementById("school").value,
+            department: document.getElementById("deparment").value,
+            style: document.querySelector('input[name="styleToggle"]:checked').nextElementSibling.innerText,
+        };
 
-      
-        const url = `agreement.html?name=${name}&phone=${phone}&email=${email}&school=${school}&department=${department}&style=${style}`;
-
-        
-        window.location.href = url;
+        localStorage.setItem("formData", JSON.stringify(formData));
+        window.location.href = "agreement.html";
     }
 }
-
 
 function goToResult() {
-    const params = getQueryParams();
-    const resultUrl = `result.html?name=${params.name}&phone=${params.phone}&email=${params.email}&school=${params.school}&department=${params.department}&style=${params.style}`;
-    window.location.href = resultUrl;
+    window.location.href = "result.html";
 }
 
+function displayData() {
+    const formData = JSON.parse(localStorage.getItem("formData"));
+    if (formData) {
+        document.getElementById("result-name").textContent = formData.name;
+        document.getElementById("result-phone").textContent = formData.phone;
+        document.getElementById("result-email").textContent = formData.email;
+        document.getElementById("result-school").textContent = formData.school;
+        document.getElementById("result-department").textContent = formData.department;
+        document.getElementById("result-style").textContent = formData.style;
+
+        // 清空 localStorage
+        localStorage.removeItem("formData");
+    } else {
+        console.error("No form data found");
+    }
+}
 
 window.onload = displayData;

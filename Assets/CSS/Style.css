@@ -77,19 +77,19 @@ img{
 .kv-img{
 	background-image: url(../IMG/Banner/KV_1440.png);
     width: 100%;
-    height: 800px; /* 固定高度 */
-    background-position:  top center; /* 居中显示 */
-    background-size: cover; /* 高度固定，宽度自适应 */
-    background-repeat: no-repeat; /* 防止重复 */
-    overflow: hidden; /* 超出部分隐藏 */
+    height: 800px; 
+    background-position:  top center; 
+    background-size: cover; 
+    background-repeat: no-repeat; 
+    overflow: hidden;
 }
 
 @media (max-width: 1439px) {
     .kv-img {
-		height: auto; /* 高度自动调整 */
+		height: auto; 
 		padding-bottom: 56.25%;
-		background-size: cover; /* 等比例缩放，图片完整显示 */
-        background-position: center; /* 保持图片居中 */
+		background-size: cover; 
+        background-position: center; 
     }
 
 @media (max-width: 767px) {
@@ -168,7 +168,7 @@ img{
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url(../IMG/BG_Element/JoinUs_BG.png); /* 背景图片 */
+    background-image: url(../IMG/BG_Element/JoinUs_BG.png);
     background-size: cover;
     background-position: center bottom;
 	background-repeat: no-repeat;
@@ -181,11 +181,11 @@ img{
     padding-bottom: 16px;
     clip-path: polygon(
         0 0, 
-        calc(100% - 60px) 0, /* 右上角導角 */
+        calc(100% - 60px) 0, 
         100% 60px, 
-        100% calc(100% - 70px), /* 右下角導角 */
+        100% calc(100% - 70px), 
         calc(100% - 70px) 100%, 
-        60px 100%, /* 左下角導角 */
+        60px 100%, 
         0 calc(100% - 60px)
     );
     box-sizing: border-box;
@@ -204,7 +204,7 @@ img{
     right: 0;
     width: 3px;
     height: 100%;
-    background: linear-gradient(to bottom, #ffffff00 10%, #ffffff 70%); /* 右側漸層 */
+    background: linear-gradient(to bottom, #ffffff00 10%, #ffffff 70%); 
 }
 
 /* 左線段 */
@@ -213,7 +213,7 @@ img{
     left: 0;
     width: 100%;
     height: 3px; 
-    background: linear-gradient(to right, #ffffff00 10%, #ffffff 60%); /* 底部漸層 */
+    background: linear-gradient(to right, #ffffff00 10%, #ffffff 60%); 
 }
 
 
@@ -226,11 +226,11 @@ img{
     padding: 48px 80px;
     clip-path: polygon(
         0 0, 
-        calc(100% - 60px) 0, /* 右上角導角 */
+        calc(100% - 60px) 0, 
         100% 60px, 
-        100% calc(100% - 60px), /* 右下角導角 */
+        100% calc(100% - 60px), 
         calc(100% - 60px) 100%, 
-        60px 100%, /* 左下角導角 */
+        60px 100%, 
         0 calc(100% - 60px)
     );
 }
@@ -243,6 +243,16 @@ img{
     right: 0;
 }
 
+.result-space{
+    padding: 80px 180px;
+}
+
+@media (max-width: 1439px) {
+    .result-space{
+        padding: 40px 160px;
+    }
+    
+}
 @media (max-width: 1023px) {
     .CardStyle{
         padding: 48px 40px;
@@ -263,11 +273,11 @@ img{
         padding-bottom:8px ;
         clip-path: polygon(
         0 0, 
-        calc(100% - 24px) 0, /* 右上角導角 */
+        calc(100% - 24px) 0, 
         100% 24px, 
-        100% calc(100% - 24px), /* 右下角導角 */
+        100% calc(100% - 24px), 
         calc(100% - 24px) 100%, 
-        24px 100%, /* 左下角導角 */
+        24px 100%, 
         0 calc(100% - 24px)
     );
     }
@@ -276,11 +286,11 @@ img{
         padding: 24px 16px;
         clip-path: polygon(
         0 0, 
-        calc(100% - 24px) 0, /* 右上角導角 */
+        calc(100% - 24px) 0,
         100% 24px, 
-        100% calc(100% - 24px), /* 右下角導角 */
+        100% calc(100% - 24px), 
         calc(100% - 24px) 100%, 
-        24px 100%, /* 左下角導角 */
+        24px 100%,
         0 calc(100% - 24px)
     );
     }
@@ -288,9 +298,6 @@ img{
     .CardElement{
         width: 27px;
         height: 27px;
-    }
-    .caption{
-        margin-bottom: 40px;
     }
 }
 
@@ -352,7 +359,9 @@ img{
     background-color: white;
     border: 1px solid #1C4EB0;
     color: #1C4EB0;
-    padding: 4px 12px;
+    padding: 4px 16px;
+    font-size: 16px;
+    font-weight: 500;
 }
 
 .captcha-img{
@@ -510,7 +519,7 @@ img{
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 48px;
+    margin-bottom: 24px;
 }
 /* Input */
 
@@ -550,7 +559,7 @@ input:focus {
 }
 
 .input-container.invalid input {
-    border: 1px solid red; /* 錯誤時紅色邊框 */
+    border: 1px solid red; 
 }
 
 .input-container .error-message {
@@ -577,7 +586,7 @@ input:focus {
     }
 
     .caption{
-        margin-bottom: 32px;
+        margin-bottom: 16px;
     }
 }
 
@@ -595,7 +604,7 @@ input:focus {
 }
 
 .radio-input {
-    display: none; /* 隱藏原生 radio */
+    display: none; 
 }
 
 .radio-option{
@@ -622,15 +631,15 @@ flex-wrap: wrap;
 /* Textarea */
 .text-container {
     position: relative;
-    width: 100%; /* 可根據需要調整寬度 */
+    width: 100%; 
     margin-bottom: 48px;
 }
 
 textarea {
     width: 100%;
-    height: auto; /* 自動調整高度 */
-    min-height: 40px; /* 預設高度為兩行字高 */
-    resize: vertical; /* 只允許垂直調整 */
+    height: auto; 
+    min-height: 40px; 
+    resize: vertical; 
     padding: 10px;
     box-sizing: border-box;
     border: 1px solid #ccc;
@@ -667,29 +676,6 @@ textarea::placeholder {
     background-color: #024389;
 }
 
-.next:disabled{
-    background-color: #ddd;
-    cursor: not-allowed;
-}
-
-
-
-/* 同意事項 */
-.modal {
-    display: none;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #f8f8f8;
-    max-width: 600px;
-    max-height: 75vh;
-    overflow-y: auto;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    z-index: 1000; 
-}
-
-
 
 
 .confirm-btn {
@@ -712,67 +698,7 @@ textarea::placeholder {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.confirm-btn:disabled {
-    background-color: #ddd;
-    cursor: not-allowed;
-}
-.modal-body h5{
-    margin-top: 12px;
-}
-.modal-body p{
-    margin-top: 8px;
-}
 
-@media (max-width: 1023px) {
-    .modal{
-        width: 90vw;
-    }
-}
-
-@media (max-width: 767px) {
-
-    .modal{
-        padding: 16px;
-    }
-    .modal-header h3 {
-        font-size: clamp(16px, 4vw, 24px);
-    }
-    .confirm-btn{
-        font-size: 18px;
-        padding: 12px;
-    }
-
-    .modal-content{
-        padding: 40px 16px 16px 16px;
-    }
-
-    .close-btn{
-        font-size: 28px;
-        top: -32px;
-        right: 0px;
-    }
-
-    .modal-header{
-        padding-bottom: 8px;
-    }
-
-    .modal-content p{
-        font-size: 18px;
-    }
-
-    .modal-body h4{
-        font-size: 16px;
-    }
-
-    .modal-body p,.modal-body ul li {
-        font-size: 16px;
-    }
-
-    .modal-body li{
-        margin-top: 12px;
-    }
-    
-}
 
 
 /* -------------------------------------結果頁------------------------------------ */
@@ -811,7 +737,7 @@ textarea::placeholder {
 
 .submit-block{
     width: 100%;
-    padding: 40px 136px;
+    padding: 40px 144px;
     background-color: white;
 }
 
@@ -819,8 +745,17 @@ textarea::placeholder {
     width: 100%;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    gap: 24px;
     margin: 0 auto;
+}
+
+.result-text{
+    width: 80%;
+    text-align: right;
+}
+
+.label-text .body3{
+    width: 120px;
 }
 
 .label-block{
@@ -829,6 +764,13 @@ textarea::placeholder {
     flex-direction: column;
     gap: 16px;
     margin-top: 24px;
+}
+
+
+.label-text h5{
+    width: 80%;
+    text-align: right;
+    word-break: break-all;
 }
 
 .success-block{
@@ -857,12 +799,14 @@ textarea::placeholder {
     background-color: white;
     border-radius: 24px;
 }
-@media (max-width: 1023px) {
-
+@media (max-width: 1439px) {
     .submit-block{
-        padding: 40px 80px;
+        padding: 40px 140px;
     }
 }
+
+
+
 @media (max-width: 767px) {
     .label-text{
         gap: 8px;
@@ -871,11 +815,7 @@ textarea::placeholder {
         width: auto;
         white-space: nowrap;
     }
-    .label-text h5{
-        width: 80%;
-        text-align: right;
-        word-break: break-all;
-    }
+    
     .helptext h5{
         text-align: right;
     }
@@ -907,6 +847,11 @@ textarea::placeholder {
     background-color: white;
 }
 
+
+.agree-content li{
+    margin-top: 16px;
+}
+
 .agree-content .next,.form-block .next,.submit-block .next{
     margin-top: 40px;
 }
@@ -916,6 +861,10 @@ textarea::placeholder {
     right: 0;
     top: 0;
     width: 20vw;
+}
+
+.agree-compony{
+    margin-top: 24px;
 }
 
 @media (max-width: 1023px) {
@@ -949,4 +898,9 @@ textarea::placeholder {
     .agree-content .next,.form-block .next,.submit-block .next{
         margin-top: 24px;
     }
+
+    .agree-content li{
+        margin-top: 12px;
+    }
+    
 }
