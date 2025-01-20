@@ -349,29 +349,6 @@ img{
     gap: 20px;
 }
 
-.captcha-block{
-    display: flex;
-    gap: 12px;
-}
-
-.captcha-btn{
-    white-space: nowrap;
-    background-color: white;
-    border: 1px solid #1C4EB0;
-    color: #1C4EB0;
-    padding: 4px 16px;
-    font-size: 16px;
-    font-weight: 500;
-}
-
-.captcha-img{
-    width: 20%;
-    height: 47px;
-}
-
-.captcha-input{
-    max-width: 50%;
-}
 
 
 
@@ -538,6 +515,8 @@ label{
 
 .input-container {
     margin-bottom: 20px;
+    display: inline-block; 
+    white-space: nowrap; 
 }
 
 label {
@@ -854,6 +833,8 @@ button:disabled {
 
 
 
+
+
 @media (max-width: 767px) {
 
     .agreement .Title{
@@ -886,10 +867,6 @@ button:disabled {
 
 /* checkbox */
 
-#agreement-checkbox{
-    width: fit-content;
-    margin-top: 8px;
-}
 
 .indented a{
     color:#1C4EB0 ;
@@ -898,12 +875,15 @@ button:disabled {
 
 .agree-check{
     display: flex;
-    flex-direction: row;
-    justify-content: center;
+    flex-direction: column;
     align-items: flex-start;
-    gap: 8px;
     margin-top: 32px;
     margin-bottom: 24px;
+    align-items: center;
+}
+
+.agree-check .error-message{
+    padding-left: 26px;
 }
 
 .invalid input {
@@ -912,19 +892,8 @@ button:disabled {
 
 .error-message {
     color: red;
-    font-size: 0.9em;
-    margin-top: 4px;
-}
-
-.agree-check {
-    position: relative;
-}
-
-.agree-check .error-message {
-    position: absolute;
-    top: -32px;
-    color: red;
     font-size: 16px;
+    margin-top: 4px;
 }
 
 
@@ -1054,8 +1023,82 @@ button:disabled {
     padding: 4px 0px 12px 0px;
   }
 
-  @media (max-width: 767px) {
+
+  .agree-check .check-container {
+    display: flex;
+    align-items:flex-start;
+    gap: 8px;
+}
+
+.agree-check .indented {
+    display: inline-block;
+    text-indent: 0px; /* 控制縮排大小，根據需求調整 */
+}
+
+.agree-check .indented a {
+    display: inline;
+}
+
+input[type="checkbox"] {
+    width: 12px;
+    height: 12px; /* 確保區域可點擊 */
+    transform: scale(1.5);
+    margin-top: 7px;
+}
+
+
+@media (max-width: 767px) {
     .agree-content{
         padding: 12px 16px 40px 16px;
     }
-  }
+}
+
+.input-container #captcha{
+    max-width: 80%;
+}
+
+.captcha-img {
+    display: inline-block; 
+    vertical-align: middle; 
+}
+
+
+.captcha-block{
+    display: flex;
+    gap: 12px;
+}
+
+.captcha-btn{
+    background-color: white;
+    font-size: 16px;
+    color: #1C4EB0;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.captcha-img{
+    width: 20%;
+    height: 47px;
+}
+
+.captcha-lable{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.captcha-lable{
+    width: 100%;
+    margin-bottom: 8px;
+}
+
+.captcha-lable label{
+    margin-bottom: 0;
+}
+
+.refresh-icon{
+    width: 18px;
+}

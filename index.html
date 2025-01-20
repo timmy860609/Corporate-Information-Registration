@@ -155,24 +155,36 @@
                             </div>
                         </div>
 
+
                         <div class="input-container">
+                            <div class="captcha-lable">
+                                <label>驗證碼</label>
+                                <button type="button" class="captcha-btn"><img class="refresh-icon" src="./Assets/IMG/refresh_outline.png" alt="">換一張</button>
+                            </div>
+                            
+                            <input type="text" id="captcha" placeholder="請輸入驗證碼">
+                            <img src="./Assets/IMG/captcha.jpg" alt="" class="captcha-img">
+                        </div>
+                        
+                        <!-- <div class="input-container">
                             <label>請輸入驗證碼</label>
                             <div class="captcha-block">
-                                <input type="text"class="captcha-input">
+                                <input type="text"class="captcha-input" id="captcha">
                                 <img src="./Assets/IMG/captcha.jpg" alt="" class="captcha-img">
                                 <button type="button" class="captcha-btn">換一張</button>
                             </div>
-                            
-                        </div>
+                        </div> -->
 
                         <label class="agree-check">
-                            <input type="checkbox" id="agreement-checkbox">
+                            <div class="check-container">
+                                <input type="checkbox" id="agreement-checkbox">
                             <span class="indented">
                                 請先閱讀並同意
                                 <a href="#" id="open-modal">
                                     個人資料蒐集告知及聲明
                                 </a>
                             </span>
+                            </div>
                             <p class="error-message"></p>
                         </label>
                         

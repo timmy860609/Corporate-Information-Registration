@@ -5,10 +5,11 @@ function validateForm() {
         { id: 'email', message: '請輸入正確的電子郵件', validate: (value) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value.trim()) },
         { id: 'school', message: '請填寫學校名稱', validate: (value) => value.trim() !== '' },
         { id: 'department', message: '請填寫科系名稱', validate: (value) => value.trim() !== '' },
+        { id: 'captcha', message: '請填寫正確的驗證碼', validate: (value) => /^[a-zA-Z0-9]{4}$/.test(value.trim()) },
     ];
 
     let isValid = true;
-    let firstErrorField = null; 
+    let firstErrorField = null;
 
     fields.forEach((field) => {
         const input = document.getElementById(field.id);
@@ -48,18 +49,16 @@ function validateForm() {
 
     const agreementCheckbox = document.getElementById('agreement-checkbox');
     const agreementContainer = document.querySelector('.agree-check');
-    let errorContainer = agreementContainer.querySelector('.error-message');
+    let agreementErrorContainer = agreementContainer.querySelector('.error-message');
 
-    if (!errorContainer) {
-        errorContainer = document.createElement('p');
-        errorContainer.className = 'error-message';
-        agreementContainer.insertBefore(errorContainer, agreementContainer.firstChild);
+    if (!agreementErrorContainer) {
+        agreementErrorContainer = document.createElement('p');
+        agreementErrorContainer.className = 'error-message';
+        agreementContainer.appendChild(agreementErrorContainer);
     }
 
-    // 取消 disabled 屬性
     agreementCheckbox.disabled = false;
 
-    // 強制開啟同意事項的 modal
     agreementCheckbox.addEventListener('click', (e) => {
         if (!agreementCheckbox.checked) {
             const modal = document.getElementById('modal');
@@ -67,13 +66,13 @@ function validateForm() {
             const body = document.body;
             modal.style.display = 'flex';
             modalOverlay.style.display = 'block';
-            body.style.overflow = 'hidden'; // 防止頁面滾動
+            body.style.overflow = 'hidden';
         }
     });
 
     if (!agreementCheckbox.checked) {
         agreementContainer.classList.add('invalid');
-        errorContainer.textContent = '請先閱讀並同意個人資料蒐集告知及聲明';
+        agreementErrorContainer.textContent = '請先閱讀並同意個人資料蒐集告知及聲明';
         isValid = false;
 
         if (!firstErrorField) {
@@ -81,16 +80,16 @@ function validateForm() {
         }
     } else {
         agreementContainer.classList.remove('invalid');
-        errorContainer.textContent = '';
+        agreementErrorContainer.textContent = '';
     }
 
     agreementCheckbox.addEventListener('change', () => {
         if (agreementCheckbox.checked) {
             agreementContainer.classList.remove('invalid');
-            errorContainer.textContent = '';  
+            agreementErrorContainer.textContent = '';  
         } else {
             agreementContainer.classList.add('invalid');
-            errorContainer.textContent = '請先閱讀並同意個人資料蒐集告知及聲明';
+            agreementErrorContainer.textContent = '請先閱讀並同意個人資料蒐集告知及聲明';
         }
     });
 
@@ -99,7 +98,7 @@ function validateForm() {
         agreeButton.addEventListener('click', () => {
             if (agreementCheckbox.checked) {
                 agreementContainer.classList.remove('invalid');
-                errorContainer.textContent = ''; 
+                agreementErrorContainer.textContent = ''; 
             }
         });
     }
