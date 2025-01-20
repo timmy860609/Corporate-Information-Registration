@@ -64,14 +64,13 @@ h5{
     font-size: 18px;
 }
 
-link, a{
+/* link, a{
     font-family: "Noto Sans TC", sans-serif;
     font-optical-sizing: auto;
     font-weight: 500;
     font-style: normal;
     text-decoration: none;
-    display: inline-block;
-}
+} */
 
 p{
     font-family: "Noto Sans TC", sans-serif;

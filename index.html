@@ -137,8 +137,8 @@
                         </div>
                     
                         <div class="input-container">
-                            <label for="deparment">科系</label>
-                            <input type="text" id="deparment" placeholder="請輸入畢業或就讀科系">
+                            <label for="department">科系</label>
+                            <input type="text" id="department" placeholder="請輸入畢業或就讀科系">
                         </div>
                         
                         <div class="radio-group">
@@ -164,14 +164,77 @@
                             </div>
                             
                         </div>
+
+                        <label class="agree-check">
+                            <input type="checkbox" id="agreement-checkbox" disabled>
+                            <span class="indented">
+                                請先閱讀並同意
+                                <a href="#" id="open-modal">
+                                    個人資料蒐集告知及聲明
+                                </a>
+                            </span>
+                            <p class="error-message"></p>
+                        </label>
                         
-                         <button class="next" type="button" onclick="validateForm()">下一步</button></div>
+                        <button class="next" onclick="goToResult(event)">立即報名</button>
                     </div>
-                    <img class="CardElement" src="./Assets/IMG/BG_Element/CardElement.png" alt="">
                 </div>
+                <img class="CardElement" src="./Assets/IMG/BG_Element/CardElement.png" alt="">
             </div>
         </div>
     </div>
+
+    <!-- Modal overlay -->
+  <div class="modal-overlay" id="modal-overlay"></div>
+
+  <!-- Modal -->
+  <div class="modal" id="modal">
+    <div class="modal-header">
+      <h2>個人資料蒐集告知及聲明</h2>
+      <button class="close-btn" id="close-modal">×</button>
+    </div>
+    <div class="modal-content" id="modal-content">
+        <div class="agree-content">
+            <p>元大金融控股股份有限公司暨子公司（以下統稱「元大金控」）依據個人資料保護法相關規定，於蒐集 台端之個人資料時，應告知下列事項：</p>
+            <ul>
+                <li>
+                    <h4>一、特定目的</h4>
+                    <p>元大金控基於人才招募之目的，蒐集、處理及利用 台端之個人資料。</p>
+                </li>
+                <li>
+                    <h4>二、蒐集個人資料之項目(類別)</h4>
+                    <p>台端所提供之個人資料，包含但不限於姓名、電子郵件信箱、聯絡電話、學校科系、畢業年度或其他足資直接、間接識別　台端身分之個人資料等（以下統稱「個人資料」）。</p>
+                </li>
+                <li>
+                    <h4>三、個人資料使用範圍</h4>
+                    <p>台端之個人資料僅用於元大金控人才招募活動、通知徵才或甄選訊息及資料分析等相關用途。</p>
+                </li>
+                <li>
+                    <h4>四、利用期間、地區、對象及方式</h4>
+                    <p>台端之個人資料僅供元大金控於其所在地區以自動化機器或其他非自動化之利用方式(包括書面、電子、口頭、國際傳輸或其他任何形式之利用方式)處理或利用，並於蒐集目的之必要期間內保有，惟依法令規定有較長保存期限者，從其規定。</p>
+                </li>
+                <li>
+                    <h4>五、台端得依法令規定及元大金控指定之方式及程序，行使下列權利：</h4>
+                    <p>1.向元大金控查詢、請求閱覽或請求製給複製本，而元大金控得酌收必要成本費用。</p>
+                    <p>2.向元大金控請求補充或更正，惟本人應為適當之釋明。</p>
+                    <p>3..向元大金控請求停止蒐集、處理或利用及請求刪除，惟元大金控因執行業務所必須者，得不依 台端請求為之。 </p>
+                    <p>倘 台端需執行以上權利，請透過human.fhc@yuanta.com通知元大金控人力資源部辦理。</p>
+                </li>
+                <li>
+                    <h4>六、提供個人資料與否之自由及其之影響</h4>
+                    <p>台端得自由選擇是否提供相關個人資料，惟 台端知悉並瞭解若拒絕提供相關個人資料或所提供之個人資料有誤，元大金控將無法進行必要之徵才審核及聯繫作業或提供 台端相關服務。</p>
+                </li>
+            </ul>
+            <p class="agree-compony">子公司：包括元大證券股份有限公司、元大商業銀行股份有限公司、元大人壽保險股份有限公司、元大期貨股份有限公司、元大證券投資信託股份有限公司、元大證券投資顧問股份有限公司、元大創業投資股份有限公司、元大國際資產管理股份有限公司上開公司日後若有增刪，將於元大金融控股股份有限公司網站公告。</p>
+        </div>
+    </div>
+    <div class="modal-footer">
+      <button class="next" id="agree-button" disabled>確認同意</button>
+    </div>
+  </div>
+
+    
+
 
 
    <!-- 聯絡我們 -->
@@ -202,7 +265,29 @@
             <span class="white">建議瀏覽器版本：Chrome、Safari、FireFox、Edge以上最新版本</span>
         </div>
     </div>
+
+    <!-- Server Error Modal -->
+    <div class="modal-overlay" id="serverErrorOverlay"></div>
+    <div class="modal" id="serverErrorModal">
+        <div class="modal-header">
+            <h2>送出失敗</h2>
+            <button class="close-btn" id="closeErrorModal">&times;</button>
+        </div>
+        <div class="modal-content">
+            <div class="error-content">
+                <img src="./Assets/IMG/error.png" alt="" class="error-icon">
+                <h4>請稍後再試</h4>
+                <p>很抱歉，報名失敗。由於網絡問題或系統維護，目前伺服器無法處理您的請求，我們的技術團隊已經在全力解決，建議您稍後再試，或者聯繫我們的客服團隊以獲取更多協助！</p>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="next" id="closeModalFooter">我知道了</button>
+        </div>
+    </div>
+    
     
     <script src="Assets/JS/form.js"></script>
     <script src="Assets/JS/all.js"></script>
+    <script src="Assets/JS/modal.js"></script>
+    <script src="Assets/JS/data.js"></script>
 </body>
