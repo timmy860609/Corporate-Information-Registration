@@ -10,12 +10,10 @@ function validateForm() {
     let isValid = true;
     let firstErrorField = null; 
 
-    
     fields.forEach((field) => {
         const input = document.getElementById(field.id);
         const parent = input.parentNode;
-        
-        
+
         let errorContainer = parent.querySelector('.error-message');
         
         if (!errorContainer) {
@@ -24,24 +22,23 @@ function validateForm() {
             parent.appendChild(errorContainer);
         }
 
-       
         if (!field.validate(input.value)) {
-            parent.classList.add('invalid');  
-            errorContainer.textContent = field.message; 
+            parent.classList.add('invalid');
+            errorContainer.textContent = field.message;
             isValid = false;
 
             if (!firstErrorField) {
                 firstErrorField = input;
             }
         } else {
-            parent.classList.remove('invalid');  
-            errorContainer.textContent = '';  
+            parent.classList.remove('invalid');
+            errorContainer.textContent = '';
         }
 
         input.addEventListener('input', () => {
             if (field.validate(input.value)) {
                 parent.classList.remove('invalid');
-                errorContainer.textContent = '';  
+                errorContainer.textContent = '';
             } else {
                 parent.classList.add('invalid');
                 errorContainer.textContent = field.message;
@@ -58,6 +55,21 @@ function validateForm() {
         errorContainer.className = 'error-message';
         agreementContainer.insertBefore(errorContainer, agreementContainer.firstChild);
     }
+
+    // 取消 disabled 屬性
+    agreementCheckbox.disabled = false;
+
+    // 強制開啟同意事項的 modal
+    agreementCheckbox.addEventListener('click', (e) => {
+        if (!agreementCheckbox.checked) {
+            const modal = document.getElementById('modal');
+            const modalOverlay = document.getElementById('modal-overlay');
+            const body = document.body;
+            modal.style.display = 'flex';
+            modalOverlay.style.display = 'block';
+            body.style.overflow = 'hidden'; // 防止頁面滾動
+        }
+    });
 
     if (!agreementCheckbox.checked) {
         agreementContainer.classList.add('invalid');

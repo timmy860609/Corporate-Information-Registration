@@ -226,18 +226,29 @@ button{
 
 }
 
-
-@media (max-width: 767px) {
-
-	.contactus{
-		margin-top: 64px;
+@media (max-width:1439px){
+	.about{
+		padding: 60px 140px 40px 140px;
 	}
-    .about{
+	.about{
         flex-direction: column;
         gap: 16px;
         justify-content: center;
         align-items: center;
         text-align: center;
         gap: 24px;
+		padding: 24px;
     }
+}
+@media (max-width: 767px) {
+
+	.contactus{
+		padding: 32px;
+		margin-top: 64px;
+	}
+
+	.ig{
+		margin-top: 24px;
+	}
+    
 }
